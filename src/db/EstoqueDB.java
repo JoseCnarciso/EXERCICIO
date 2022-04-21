@@ -22,6 +22,10 @@ public class EstoqueDB {
         }
         return estoques;
     }
+    // cria se um novo método para retornar o getEstoqueById
+    public Estoque getEstoqueById(String id){
+       return estoqueDBMap.get(id);
+    }
 
     //cria-se um novo objeto para receber os dados cadastrados
     public void addNovoEstoque( Estoque estoque){

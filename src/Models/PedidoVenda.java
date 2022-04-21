@@ -1,0 +1,44 @@
+package Models;
+
+public class PedidoVenda {
+    private int id;
+    private Cliente cliente;
+    private Estoque estoque;
+    private int quantidade;
+
+
+    public PedidoVenda( Cliente cliente, Estoque estoque, int quantidade ) {
+        this.cliente = cliente;
+        this.estoque = estoque;
+        this.quantidade = quantidade;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId( int id ) {
+        this.id = id;
+    }
+
+    public Estoque getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(Estoque estoque ) {
+        this.estoque = estoque;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade( int quantidade ) {
+        this.quantidade = quantidade;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+}

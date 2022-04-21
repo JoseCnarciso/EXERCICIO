@@ -18,7 +18,6 @@ public class Main {
 
     public static void main( String[] args ) throws Exception {
 
-
         System.out.println("-----------PEDIDO DE VENDAS------------");
         int option;
         do {
@@ -176,17 +175,41 @@ public class Main {
                 Scanner scanner = new Scanner(System.in);
                 System.out.println("Informe o ID do cliente: ");
                 int idCliente = scanner.nextInt();
+                // instancia se a classe clinte e faz um casting chamando apenas os usuarios tipo cliente da lista
                 Cliente cliente = (Cliente) usuariosDB.getUsuariosPorId(idCliente);
                 System.out.println("ID: " + cliente.getId());
-                System.out.println("NOME " + cliente.getNome());
-                System.out.println("Informe o ID do produto: ");
-                int idProduto = scanner.nextInt();
-                System.out.println("Informe a quantidade: ");
-                int quantidade = scanner.nextInt();
-                System.out.println("--------------------------");
+                System.out.println("NOME: " + cliente.getNome());
+                System.out.println("TIPO: " + cliente.getTipoUsuario());
+                System.out.println("----------------------------------");
+                System.out.println("----------------------------------");
+                System.out.println("----------------------------------");
 
-            }break;
+                System.out.println("Informe o identificador do estoque: ");
+                String idEstoque = scanner.next();
+                Estoque estoque = estoqueDB.getEstoqueById(idEstoque);
+                System.out.println("Estoque ID" + estoque.getId());
+                System.out.println("Produto descrição: " + estoque.getProduto().getDescrição());
+                System.out.println("Validade do produto: " + estoque.getProduto().getDataValidade());
+                System.out.println("----------------------------------------------------------------");
+
+                System.out.println("Informe a quantidade de venda: ");
+                int quantidade = scanner.nextInt();
+
+                PedidoVenda novoPedido = new PedidoVenda(cliente,estoque,quantidade);
+                pedidosDeVendasDB.addNovoPedido(novoPedido);
+                break;
+
+            }
             case 9: {
+                System.out.println("-----------Listando pedidos de vendas------------");
+                System.out.println("==================================================");
+                for(PedidoVenda pedidoVenda: pedidosDeVendasDB.getPedidosDeVendas()){
+                    System.out.println("ID: " + pedidoVenda.getId());
+                    System.out.println("CLIENTE: " + pedidoVenda.getCliente());
+                    System.out.println("PRODUTO: " + pedidoVenda.getEstoque().getProduto().getDescrição());
+                    System.out.println("QUANTIDADE: " + pedidoVenda.getQuantidade());
+                    System.out.println("======================================");
+                }
 
             }break;
         }
