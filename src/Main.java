@@ -33,14 +33,11 @@ public class Main {
             System.out.println("9 - Listar pedidos de venda");
             System.out.println("0 - Sair");
 
-
             Scanner scanner = new Scanner(System.in);
 
             System.out.println("Qual operação deseja executar");
             option = scanner.nextInt();
-
             process(option);
-
 
         } while (option != 0);
     }
@@ -84,9 +81,7 @@ public class Main {
                     System.out.println("- DATA DE VALIDADE: " + produto.getDataValidade());
                     System.out.println(" ---------------------------------------");
 
-                }
-
-                break;
+                }break;
             }
             case 3 :{
                 Scanner scanner = new Scanner(System.in);
@@ -104,7 +99,7 @@ public class Main {
                 String nome = scanner.nextLine();
 
                 Cliente cliente = new Cliente(nome);
-                // Anexo o novo cliete na lista.
+                // Anexo o novo cliente na lista.
                 usuariosDB.addNovoUsuario(cliente);
 
             }break;
@@ -118,9 +113,7 @@ public class Main {
                     System.out.println("TIPO DE USUÁRIO: " + usuario.getTipoUsuario());
                     System.out.println("________________________________________________");
                     System.out.println("________________________________________________");
-
                     }break;
-
                 }
                 case 6 :{
                     Scanner scanner = new Scanner(System.in);
@@ -150,8 +143,6 @@ public class Main {
                     break;
                 }
             case 7: {
-
-
                 for (Estoque estoque : estoqueDB.getEstoques()) {
 
                     System.out.println("----------------------------------- ");
@@ -165,9 +156,7 @@ public class Main {
                     // mostra a quantidade cadastrada no estoque
                     System.out.println("- QUANTIDADE: " + estoque.getQuantidade());
                     System.out.println(" ---------------------------------------");
-
-                }
-                break;
+                }break;
 
             }
             case 8: {
@@ -198,8 +187,8 @@ public class Main {
                 PedidoVenda novoPedido = new PedidoVenda(cliente,estoque,quantidade);
                 pedidosDeVendasDB.addNovoPedido(novoPedido);
                 break;
-
             }
+
             case 9: {
                 System.out.println("-----------Listando pedidos de vendas------------");
                 System.out.println("==================================================");
