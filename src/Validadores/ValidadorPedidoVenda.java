@@ -13,7 +13,6 @@ public class ValidadorPedidoVenda extends Validador{
 
         this.validadoresPedidoVenda.add(new ValidadorDataValidade());
         this.validadoresPedidoVenda.add(new ValidadorQuantidade());
-
     }
 
     @Override
@@ -25,10 +24,6 @@ public class ValidadorPedidoVenda extends Validador{
                 adicionarErros(erro);
             }
         }
-
-        return ! (getErros().size() > 0);
-
+        return !(getErros().size() > 0);
     }
-
-
 }

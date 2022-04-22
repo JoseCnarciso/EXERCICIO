@@ -3,6 +3,7 @@ import db.EstoqueDB;
 import db.PedidosDeVendasDB;
 import db.ProdutosDB;
 import db.UsuariosDB;
+import Validadores.ValidadorPedidoVenda;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -185,9 +186,13 @@ public class Main {
                 int quantidade = scanner.nextInt();
 
                 PedidoVenda novoPedido = new PedidoVenda(cliente,estoque,quantidade);
+                ValidadorPedidoVenda validadorPedidoVenda = new ValidadorPedidoVenda(novoPedido);
+                if (validadorPedidoVenda.ehValido()) {
                 pedidosDeVendasDB.addNovoPedido(novoPedido);
-                break;
-            }
+                }else {
+                    System.out.println(validadorPedidoVenda.getErros());
+                }
+            }break;
 
             case 9: {
                 System.out.println("-----------Listando pedidos de vendas------------");
@@ -199,7 +204,6 @@ public class Main {
                     System.out.println("QUANTIDADE: " + pedidoVenda.getQuantidade());
                     System.out.println("======================================");
                 }
-
             }break;
         }
     }
